@@ -1,0 +1,32 @@
+{
+  "verifier": "@electron/asar 3.2.17",
+  "originalFiles": 1057,
+  "unchanged": 1055,
+  "changed": [
+    "app/index.html",
+    "app/js/app/ui/textLine.js"
+  ],
+  "added": [
+    "app/style/furigana.css",
+    "app/resources/furigana/LICENSE-kuromoji.txt",
+    "app/resources/furigana/NOTICE-kuromoji.md",
+    "app/resources/furigana/dict/base.dat.gz",
+    "app/resources/furigana/dict/cc.dat.gz",
+    "app/resources/furigana/dict/check.dat.gz",
+    "app/resources/furigana/dict/tid.dat.gz",
+    "app/resources/furigana/dict/tid_map.dat.gz",
+    "app/resources/furigana/dict/tid_pos.dat.gz",
+    "app/resources/furigana/dict/unk.dat.gz",
+    "app/resources/furigana/dict/unk_char.dat.gz",
+    "app/resources/furigana/dict/unk_compat.dat.gz",
+    "app/resources/furigana/dict/unk_invoke.dat.gz",
+    "app/resources/furigana/dict/unk_map.dat.gz",
+    "app/resources/furigana/dict/unk_pos.dat.gz",
+    "app/js/app/option/furigana.js",
+    "app/js/vendor/kuromoji.js"
+  ],
+  "backupSHA256": "2d5b5b289c6eb177f0c7ca68a4c778e4fe68c90a654b6f182042f3388325549d",
+  "patchedSHA256": "8931a7be0c675c1c5c2b852d8e918cb092ba5c959ba72412a9ed496242ce6fcf",
+  "allPayloadFilesMatch": true,
+  "restoreVerifiedOriginalHash": true
+}

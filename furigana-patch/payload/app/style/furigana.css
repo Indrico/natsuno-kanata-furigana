@@ -1,0 +1,41 @@
+#furiganaToggle {
+    position: absolute;
+    width: 24%;
+    height: 5%;
+    left: 38%;
+    top: 77%;
+    color: var(--text-light-color);
+    text-shadow: var(--text-shadow-dark);
+    font-size: var(--text-font-size);
+}
+
+#furiganaToggle::before {
+    border-color: var(--border-light-color);
+}
+
+ruby.furigana {
+    ruby-position: over;
+    ruby-align: center;
+}
+
+ruby.furigana rt {
+    font-size: 50%;
+    font-weight: normal;
+    letter-spacing: 0;
+    user-select: none;
+    pointer-events: none;
+}
+
+html:not(.furigana-enabled) ruby.furigana {
+    display: inline;
+}
+
+html:not(.furigana-enabled) ruby.furigana rt {
+    display: none;
+}
+
+.furigana-enabled #questTextArea0,
+.furigana-enabled #questTextArea1,
+.furigana-enabled #logueTextArea0 {
+    line-height: 190%;
+}

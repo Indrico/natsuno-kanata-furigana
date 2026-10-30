@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport"
+        content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <!-- monaca -->
+    <meta http-equiv="Content-Security-Policy"
+        content="default-src * data: gap: https://ssl.gstatic.com; style-src * 'unsafe-inline'; script-src * 'unsafe-inline' 'unsafe-eval'">
+    <script src="../../components/loader.js"></script>
+    <!-- monaca -->
+
+    <title>natsuno-kanata</title>
+
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" type="image/png" href="resources/icon/icon_256x256.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="resources/icon/apple-touch-icon.png">
+
+    <link rel="stylesheet" type="text/css" href="style/main.css">
+    <link rel="stylesheet" type="text/css" href="style/system.css">
+    <link rel="stylesheet" type="text/css" href="style/title.css">
+    <link rel="stylesheet" type="text/css" href="style/menuTab.css">
+    <link rel="stylesheet" type="text/css" href="style/story.css">
+    <link rel="stylesheet" type="text/css" href="style/exproler.css">
+    <link rel="stylesheet" type="text/css" href="style/house.css">
+    <link rel="stylesheet" type="text/css" href="style/quest.css">
+    <link rel="stylesheet" type="text/css" href="style/logue.css">
+    <link rel="stylesheet" type="text/css" href="style/gameOver.css">
+    <link rel="stylesheet" type="text/css" href="style/option.css">
+    <link rel="stylesheet" type="text/css" href="style/furigana.css">
+    <link rel="stylesheet" type="text/css" href="style/question.css">
+    <link rel="stylesheet" type="text/css" href="style/loading.css">
+    <link rel="stylesheet" type="text/css" href="style/splash.css">
+    <link rel="stylesheet" type="text/css" href="style/caution.css">
+    <link rel="stylesheet" type="text/css" href="style/ending.css">
+    <link rel="stylesheet" type="text/css" href="style/contextMenu.css">
+    <link rel="stylesheet" type="text/css" href="style/dialog.css">
+    <link rel="stylesheet" type="text/css" href="style/catalog.css">
+    <link rel="stylesheet" type="text/css" href="style/background.css">
+    <link rel="stylesheet" type="text/css" href="style/foreground.css">
+    <link rel="stylesheet" type="text/css" href="style/help.css">
+    <link rel="stylesheet" type="text/css" href="style/credit.css">
+    <link rel="stylesheet" type="text/css" href="style/endroll.css">
+    <link rel="stylesheet" type="text/css" href="style/movie.css">
+    <link rel="stylesheet" type="text/css" href="style/develop.css">
+
+    <script type="text/javascript" src="js/vendor/kuromoji.js"></script>
+    <script type="text/javascript" src="js/app/option/furigana.js"></script>
+
+    <script type="text/javascript" src="js/system/core/globalSystem.js"></script>
+    <script type="text/javascript" src="js/system/core/dataHolder.js"></script>
+    <script type="text/javascript" src="js/system/core/globalManager.js"></script>
+    <script type="text/javascript" src="js/system/core/timeManager.js"></script>
+
+    <script type="text/javascript" src="js/system/utility/csvLoader.js"></script>
+    <script type="text/javascript" src="js/system/utility/random.js"></script>
+    <script type="text/javascript" src="js/system/utility/class.js"></script>
+    <script type="text/javascript" src="js/system/utility/list.js"></script>
+    <script type="text/javascript" src="js/system/utility/element.js"></script>
+    <script type="text/javascript" src="js/system/utility/type.js"></script>
+    <script type="text/javascript" src="js/system/utility/color.js"></script>
+    <script type="text/javascript" src="js/system/utility/platform.js"></script>
+    <script type="text/javascript" src="js/system/utility/curve.js"></script>
+    <script type="text/javascript" src="js/system/utility/animator.js"></script>
+    <script type="text/javascript" src="js/system/utility/window.js"></script>
+    <script type="text/javascript" src="js/system/utility/stringExtension.js"></script>
+    <script type="text/javascript" src="js/system/utility/shaker.js"></script>
+    <script type="text/javascript" src="js/system/utility/tag.js"></script>
+    <script type="text/javascript" src="js/system/utility//timer.js"></script>
+
+    <script type="text/javascript" src="js/system/ui/uiManager.js"></script>
+    <script type="text/javascript" src="js/system/ui/uiElement.js"></script>
+
+    <script type="text/javascript" src="js/system/sound/soundElement.js"></script>
+    <script type="text/javascript" src="js/system/sound/soundManager.js"></script>
+    <script type="text/javascript" src="js/system/sound/soundDataHolder.js"></script>
+
+    <script type="text/javascript" src="js/system/movie/movieManager.js"></script>
+    <script type="text/javascript" src="js/system/movie/movieDataHolder.js"></script>
+
+    <script type="text/javascript" src="js/app/ui/windowManager.js"></script>
+    <script type="text/javascript" src="js/app/ui/fader.js"></script>
+    <script type="text/javascript" src="js/app/ui/backgroundWindow.js"></script>
+    <script type="text/javascript" src="js/app/ui/backgroundDataHolder.js"></script>
+    <script type="text/javascript" src="js/app/ui/foregroundWindow.js"></script>
+    <script type="text/javascript" src="js/app/ui/foregroundElement.js"></script>
+    <script type="text/javascript" src="js/app/ui/foregroundDataHolder.js"></script>
+    <script type="text/javascript" src="js/app/ui/textInputManager.js"></script>
+    <script type="text/javascript" src="js/app/ui/textInput.js"></script>
+    <script type="text/javascript" src="js/app/ui/textLine.js"></script>
+    <script type="text/javascript" src="js/app/ui/textLineManager.js"></script>
+    <script type="text/javascript" src="js/app/ui/statusWindow.js"></script>
+    <script type="text/javascript" src="js/app/ui/menuTab.js"></script>
+    <script type="text/javascript" src="js/app/ui/storyWindow.js"></script>
+    <script type="text/javascript" src="js/app/ui/exprolerWindow.js"></script>
+    <script type="text/javascript" src="js/app/ui/titleWindow.js"></script>
+    <script type="text/javascript" src="js/app/ui/itemBoxWindow.js"></script>
+    <script type="text/javascript" src="js/app/ui/houseCraftWindow.js"></script>
+    <script type="text/javascript" src="js/app/ui/houseItemWindow.js"></script>
+    <script type="text/javascript" src="js/app/ui/gameOverWindow.js"></script>
+    <script type="text/javascript" src="js/app/ui/soundSwitch.js"></script>
+    <script type="text/javascript" src="js/app/ui/tipsWindow.js"></script>
+    <script type="text/javascript" src="js/app/ui/optionWindow.js"></script>
+    <script type="text/javascript" src="js/app/ui/questionWindow.js"></script>
+    <script type="text/javascript" src="js/app/ui/questWindow.js"></script>
+    <script type="text/javascript" src="js/app/ui/logueWindow.js"></script>
+    <script type="text/javascript" src="js/app/ui/endingWindow.js"></script>
+    <script type="text/javascript" src="js/app/ui/contextMenuWindow.js"></script>
+    <script type="text/javascript" src="js/app/ui/dialogWindow.js"></script>
+    <script type="text/javascript" src="js/app/ui/catalogWindow.js"></script>
+    <script type="text/javascript" src="js/app/ui/creditWindow.js"></script>
+    <script type="text/javascript" src="js/app/ui/endrollWindow.js"></script>
+    <script type="text/javascript" src="js/app/ui/helpWindow.js"></script>
+    <script type="text/javascript" src="js/app/ui/overlayWindow.js"></script>
+    <script type="text/javascript" src="js/app/ui/titleDataHolder.js"></script>
+
+    <script type="text/javascript" src="js/app/effect/cameraEffectManager.js"></script>
+    <script type="text/javascript" src="js/app/effect/cameraEffectDataHolder.js"></script>
+    <script type="text/javascript" src="js/app/effect/backgroundLightManager.js"></script>
+    <script type="text/javascript" src="js/app/effect/backgroundLightDataHolder.js"></script>
+
+    <script type="text/javascript" src="js/app/event/event.js"></script>
+    <script type="text/javascript" src="js/app/event/eventManager.js"></script>
+    <script type="text/javascript" src="js/app/event/eventTableDataHolder.js"></script>
+    <script type="text/javascript" src="js/app/event/eventGenerator.js"></script>
+    <script type="text/javascript" src="js/app/event/itemGetEvent.js"></script>
+    <script type="text/javascript" src="js/app/event/itemThrowEvent.js"></script>
+    <script type="text/javascript" src="js/app/event/itemUseEvent.js"></script>
+    <script type="text/javascript" src="js/app/event/moveEvent.js"></script>
+    <script type="text/javascript" src="js/app/event/moveFollowEvent.js"></script>
+    <script type="text/javascript" src="js/app/event/moveOutsideEvent.js"></script>
+    <script type="text/javascript" src="js/app/event/selectionEvent.js"></script>
+    <script type="text/javascript" src="js/app/event/selectionMoveEnvet.js"></script>
+    <script type="text/javascript" src="js/app/event/selectionTakePhotoEvent.js"></script>
+    <script type="text/javascript" src="js/app/event/battleEvent.js"></script>
+    <script type="text/javascript" src="js/app/event/battleForciblyEvent.js"></script>
+    <script type="text/javascript" src="js/app/event/battleBossEvent.js"></script>
+    <script type="text/javascript" src="js/app/event/battleBossSurvivorEvent.js"></script>
+    <script type="text/javascript" src="js/app/event/questEvent.js"></script>
+    <script type="text/javascript" src="js/app/event/questEndEvent.js"></script>
+    <script type="text/javascript" src="js/app/event/questSuccessEvent.js"></script>
+    <script type="text/javascript" src="js/app/event/questFailedEvent.js"></script>
+    <script type="text/javascript" src="js/app/event/questStartEvent.js"></script>
+    <script type="text/javascript" src="js/app/event/talkEvent.js"></script>
+    <script type="text/javascript" src="js/app/event/returnGatewayEvent.js"></script>
+    <script type="text/javascript" src="js/app/event/confirmEvent.js"></script>
+    <script type="text/javascript" src="js/app/event/checkConfirmEvent.js"></script>
+    <script type="text/javascript" src="js/app/event/gameOverEvent.js"></script>
+    <script type="text/javascript" src="js/app/event/chatEvent.js"></script>
+    <script type="text/javascript" src="js/app/event/chatTogetherEvent.js"></script>
+    <script type="text/javascript" src="js/app/event/itemNotFoundEvent.js"></script>
+    <script type="text/javascript" src="js/app/event/findEvent.js"></script>
+    <script type="text/javascript" src="js/app/event/stageSceneDescribeEvent.js"></script>
+    <script type="text/javascript" src="js/app/event/stageObjectDescribeEvent.js"></script>
+    <script type="text/javascript" src="js/app/event/stageObjectSecondaryDescribeEvent.js"></script>
+    <script type="text/javascript" src="js/app/event/unlockEvent.js"></script>
+    <script type="text/javascript" src="js/app/event/unlockPassCodeEvent.js"></script>
+    <script type="text/javascript" src="js/app/event/endingEvent.js"></script>
+    <script type="text/javascript" src="js/app/event/locationDescribeEvent.js"></script>
+    <script type="text/javascript" src="js/app/event/locationSpeakEvent.js"></script>
+    <script type="text/javascript" src="js/app/event/nextLocationEvent.js"></script>
+    <script type="text/javascript" src="js/app/event/checkNextLocationEvent.js"></script>
+    <script type="text/javascript" src="js/app/event/accidentEvent.js"></script>
+    <script type="text/javascript" src="js/app/event/accidentEventDataHolder.js"></script>
+    <script type="text/javascript" src="js/app/event/completeAreaEvent.js"></script>
+    <script type="text/javascript" src="js/app/event/greetingEvent.js"></script>
+    <script type="text/javascript" src="js/app/event/callObjectEvent.js"></script>
+    <script type="text/javascript" src="js/app/event/callObjectEventDataHolder.js"></script>
+    <script type="text/javascript" src="js/app/event/accessObjectEvent.js"></script>
+    <script type="text/javascript" src="js/app/event/searchEvent.js"></script>
+    <script type="text/javascript" src="js/app/event/avoidEvent.js"></script>
+    <script type="text/javascript" src="js/app/event/hideEvent.js"></script>
+    <script type="text/javascript" src="js/app/event/speakEvent.js"></script>
+    <script type="text/javascript" src="js/app/event/readEvent.js"></script>
+    <script type="text/javascript" src="js/app/event/interactEvent.js"></script>
+    <script type="text/javascript" src="js/app/event/interactEventDataHolder.js"></script>
+    <script type="text/javascript" src="js/app/event/observeEvent.js"></script>
+    <script type="text/javascript" src="js/app/event/readNoteEvent.js"></script>
+    <script type="text/javascript" src="js/app/event/noteEventDataHolder.js"></script>
+    <script type="text/javascript" src="js/app/event/selectionSearchEnvet.js"></script>
+    <script type="text/javascript" src="js/app/event/stopEvent.js"></script>
+    <script type="text/javascript" src="js/app/event/escapeLocationEvent.js"></script>
+    <script type="text/javascript" src="js/app/event/selectionActionEvent.js"></script>
+    <script type="text/javascript" src="js/app/event/bridgeDescribeEvent.js"></script>
+    <script type="text/javascript" src="js/app/event/confirmMoveOutsideEvent.js"></script>
+    <script type="text/javascript" src="js/app/event/itemInteractEvent.js"></script>
+    <script type="text/javascript" src="js/app/event/itemBrokenEvent.js"></script>
+    <script type="text/javascript" src="js/app/event/staminaLostEvent.js"></script>
+    <script type="text/javascript" src="js/app/event/obstacleEventDataHolder.js"></script>
+    <script type="text/javascript" src="js/app/event/obstacleEvent.js"></script>
+    <script type="text/javascript" src="js/app/event/obstacleDescribeEvent.js"></script>
+    <script type="text/javascript" src="js/app/event/itemGetMemoryEvent.js"></script>
+    <script type="text/javascript" src="js/app/event/locationLockedKeyGetEvent.js"></script>
+    <script type="text/javascript" src="js/app/event/confirmEnemyBossEvent.js"></script>
+    <script type="text/javascript" src="js/app/event/confirmEnemyBossSurvivorEvent.js"></script>
+    <script type="text/javascript" src="js/app/event/arrivedLocationEvent.js"></script>
+    <script type="text/javascript" src="js/app/event/arrivedLocationBeforeEvent.js"></script>
+    <script type="text/javascript" src="js/app/event/confirmItemExchangeEvent.js"></script>
+    <script type="text/javascript" src="js/app/event/locationFlagSetEvent.js"></script>
+    <script type="text/javascript" src="js/app/event/shoppingEvent.js"></script>
+    <script type="text/javascript" src="js/app/event/itemGetCollectionEvent.js"></script>
+    <script type="text/javascript" src="js/app/event/insertStageEventsEvent.js"></script>
+    <script type="text/javascript" src="js/app/event/confirmEnterBaseCampEvent.js"></script>
+    <script type="text/javascript" src="js/app/event/confirmHealEvent.js"></script>
+    <script type="text/javascript" src="js/app/event/confirmEatEvent.js"></script>
+    <script type="text/javascript" src="js/app/event/checkNextDestinationEvent.js"></script>
+    <script type="text/javascript" src="js/app/event/fishingEvent.js"></script>
+    <script type="text/javascript" src="js/app/event/itemCraftEvent.js"></script>
+    <script type="text/javascript" src="js/app/event/selectionItemCraftEnvet.js"></script>
+    <script type="text/javascript" src="js/app/event/itemGetBonusEvent.js"></script>
+    <script type="text/javascript" src="js/app/event/confirmUnequipEvent.js"></script>
+    <script type="text/javascript" src="js/app/event/forceQuestSuccessEvent.js"></script>
+    <script type="text/javascript" src="js/app/event/itemBranchEvent.js"></script>
+    <script type="text/javascript" src="js/app/event/itemGetRecordEvent.js"></script>
+    <script type="text/javascript" src="js/app/event/itemAddAccessoryEvent.js"></script>
+    <script type="text/javascript" src="js/app/event/itemAddVariableEvent.js"></script>
+    <script type="text/javascript" src="js/app/event/selectionTargetItemEvent.js"></script>
+    <script type="text/javascript" src="js/app/event/exchangeItemEvent.js"></script>
+
+    <script type="text/javascript" src="js/app/item/itemExecutor.js"></script>
+    <script type="text/javascript" src="js/app/item/itemDataHolder.js"></script>
+    <script type="text/javascript" src="js/app/item/itemCraft.js"></script>
+    <script type="text/javascript" src="js/app/item/itemCraftDataHolder.js"></script>
+    <script type="text/javascript" src="js/app/item/itemAccessory.js"></script>
+    <script type="text/javascript" src="js/app/item/itemAccessoryDataHolder.js"></script>
+
+    <script type="text/javascript" src="js/app/exproler/exprolerDataHolder.js"></script>
+
+    <script type="text/javascript" src="js/app/house/houseManager.js"></script>
+
+    <script type="text/javascript" src="js/app/location/location.js"></script>
+    <script type="text/javascript" src="js/app/location/locationDataHolder.js"></script>
+    <script type="text/javascript" src="js/app/location/locationGenerator.js"></script>
+    <script type="text/javascript" src="js/app/location/locationManager.js"></script>
+    <script type="text/javascript" src="js/app/location/locationDescribeDataHolder.js"></script>
+    <script type="text/javascript" src="js/app/location/locationFlagDataHolder.js"></script>
+    <script type="text/javascript" src="js/app/location/locationOption.js"></script>
+    <script type="text/javascript" src="js/app/location/locationOptionExitLocked.js"></script>
+    <script type="text/javascript" src="js/app/location/locationOptionExitBroken.js"></script>
+    <script type="text/javascript" src="js/app/location/locationOptionEarlyExit.js"></script>
+    <script type="text/javascript" src="js/app/location/locationOptionSpeak.js"></script>
+    <script type="text/javascript" src="js/app/location/locationOptionAfterSearchEvent.js"></script>
+    <script type="text/javascript" src="js/app/location/locationOptionNoBattle.js"></script>
+    <script type="text/javascript" src="js/app/location/stage.js"></script>
+    <script type="text/javascript" src="js/app/location/stageOption.js"></script>
+    <script type="text/javascript" src="js/app/location/stageOptionNoBattle.js"></script>
+    <script type="text/javascript" src="js/app/location/stageOptionIgnoreConfirm.js"></script>
+    <script type="text/javascript" src="js/app/location/stageDataHolder.js"></script>
+    <script type="text/javascript" src="js/app/location/stageDescribeDataHolder.js"></script>
+    <script type="text/javascript" src="js/app/location/stageObjectDataHolder.js"></script>
+    <script type="text/javascript" src="js/app/location/stageSceneDataHolder.js"></script>
+    <script type="text/javascript" src="js/app/location/areaDataHolder.js"></script>
+    <script type="text/javascript" src="js/app/location/areaManager.js"></script>
+
+    <script type="text/javascript" src="js/app/character/character.js"></script>
+    <script type="text/javascript" src="js/app/character/survivor/speakDataHolder.js"></script>
+    <script type="text/javascript" src="js/app/character/survivor/survivorCallHandler.js"></script>
+    <script type="text/javascript" src="js/app/character/survivor/survivorInventory.js"></script>
+    <script type="text/javascript" src="js/app/character/survivor/survivorEventExecutor.js"></script>
+    <script type="text/javascript" src="js/app/character/survivor/survivorEventHolder.js"></script>
+    <script type="text/javascript" src="js/app/character/survivor/survivor.js"></script>
+    <script type="text/javascript" src="js/app/character/survivor//survivorDataHolder.js"></script>
+    <script type="text/javascript" src="js/app/character/survivor/survivorManager.js"></script>
+    <script type="text/javascript" src="js/app/character/survivor/survivorSkillHolder.js"></script>
+
+    <script type="text/javascript" src="js/app/character/enemy/enemyDataHolder.js"></script>
+    <script type="text/javascript" src="js/app/character/enemy/enemy.js"></script>
+    <script type="text/javascript" src="js/app/character/enemy/enemyAttack.js"></script>
+    <script type="text/javascript" src="js/app/character/enemy/enemyAttackWait.js"></script>
+    <script type="text/javascript" src="js/app/character/enemy/enemyAttackSmash.js"></script>
+    <script type="text/javascript" src="js/app/character/enemy/enemyAttackSmashCharge.js"></script>
+    <script type="text/javascript" src="js/app/character/enemy/enemyAttackSpeak.js"></script>
+    <script type="text/javascript" src="js/app/character/enemy/enemyAttackWaitSpeak.js"></script>
+    <script type="text/javascript" src="js/app/character/enemy/enemyAttackSteal.js"></script>
+
+    <script type="text/javascript" src="js/app/skill/skillDataHolder.js"></script>
+    <script type="text/javascript" src="js/app/skill/skill.js"></script>
+    <script type="text/javascript" src="js/app/skill/stageEventOccurSkill.js"></script>
+    <script type="text/javascript" src="js/app/skill/defenseSkill.js"></script>
+    <script type="text/javascript" src="js/app/skill/callObjectSkill.js"></script>
+    <script type="text/javascript" src="js/app/skill/attackNoWeaponSkill.js"></script>
+    <script type="text/javascript" src="js/app/skill/tidySkill.js"></script>
+
+    <script type="text/javascript" src="js/app/quest/questDataHolder.js"></script>
+    <script type="text/javascript" src="js/app/quest/questExecutor.js"></script>
+    <script type="text/javascript" src="js/app/quest/questManager.js"></script>
+
+    <script type="text/javascript" src="js/app/scenario/talkDataHolder.js"></script>
+    <script type="text/javascript" src="js/app/scenario/scenarioDataHolder.js"></script>
+    <script type="text/javascript" src="js/app/scenario/scenarioExecutor.js"></script>
+    <script type="text/javascript" src="js/app/scenario/scenarioManager.js"></script>
+    <script type="text/javascript" src="js/app/scenario/endingDataHolder.js"></script>
+    <script type="text/javascript" src="js/app/scenario/chatDataHolder.js"></script>
+
+    <script type="text/javascript" src="js/app/flow/flow.js"></script>
+    <script type="text/javascript" src="js/app/flow/flowManager.js"></script>
+    <script type="text/javascript" src="js/app/flow/questFlow.js"></script>
+    <script type="text/javascript" src="js/app/flow/gatewayFlow.js"></script>
+    <script type="text/javascript" src="js/app/flow/storyFlow.js"></script>
+    <script type="text/javascript" src="js/app/flow/exprolerFlow.js"></script>
+    <script type="text/javascript" src="js/app/flow/houseFlow.js"></script>
+    <script type="text/javascript" src="js/app/flow/titleFlow.js"></script>
+    <script type="text/javascript" src="js/app/flow/logueFlow.js"></script>
+    <script type="text/javascript" src="js/app/flow/gameOverFlow.js"></script>
+    <script type="text/javascript" src="js/app/flow/splashFlow.js"></script>
+    <script type="text/javascript" src="js/app/flow/cautionFlow.js"></script>
+    <script type="text/javascript" src="js/app/flow/endingFlow.js"></script>
+    <script type="text/javascript" src="js/app/flow/endrollFlow.js"></script>
+    <script type="text/javascript" src="js/app/flow/rebootFlow.js"></script>
+    <script type="text/javascript" src="js/app/flow/enterFlow.js"></script>
+
+    <script type="text/javascript" src="js/app/shop/shopDataHolder.js"></script>
+
+    <script type="text/javascript" src="js/app/flag/flagDataHolder.js"></script>
+    <script type="text/javascript" src="js/app/flag/flagManager.js"></script>
+
+    <script type="text/javascript" src="js/app/tutorial/tutorialDataHolder.js"></script>
+    <script type="text/javascript" src="js/app/tutorial/tutorialManager.js"></script>
+
+    <script type="text/javascript" src="js/app/present/presentDataHolder.js"></script>
+    <script type="text/javascript" src="js/app/present/presentManager.js"></script>
+
+    <script type="text/javascript" src="js/app/bonus/bonusDataHolder.js"></script>
+
+    <script type="text/javascript" src="js/app/core/gameManager.js"></script>
+    <script type="text/javascript" src="js/app/core/terminologyDataHolder.js"></script>
+    <script type="text/javascript" src="js/app/core/inputWordDataHolder.js"></script>
+    <script type="text/javascript" src="js/app/core/resourceManager.js"></script>
+    <script type="text/javascript" src="js/app/core/endrollDataHolder.js"></script>
+    <script type="text/javascript" src="js/app/core/globalParamDataHolder.js"></script>
+
+    <script type="text/javascript" src="js/app/save/saveConvertDataHolder.js"></script>
+    <script type="text/javascript" src="js/app/save/saveData.js"></script>
+    <script type="text/javascript" src="js/app/save/saveSystem.js"></script>
+
+    <script type="text/javascript" src="js/app/option/platformSetting.js"></script>
+    <script type="text/javascript" src="js/app/option/graphicsSetting.js"></script>
+    <script type="text/javascript" src="js/app/option/gameModeSetting.js"></script>
+    <script type="text/javascript" src="js/app/option/shortCutKey.js"></script>
+    <script type="text/javascript" src="js/app/option/textAutoManager.js"></script>
+
+    <script type="text/javascript" src="js/app//endless/endlessSystem.js"></script>
+    <script type="text/javascript" src="js/app//endless/endlessManager.js"></script>
+
+    <!-- monaca
+    <script type="text/javascript" src="js/monaca/sound/soundManager.js"></script>
+    monaca -->
+
+    <script type="text/javascript" src="js/system/main.js"></script>
+</head>
+
+<body id="body" onLoad="onLoad()">
+    <div class="app" id="sound"></div>
+    <div class="app" id="wrapper">
+        <div class="app background" id="bgImageWindow">
+            <div class="app background" id="bgImage0"></div>
+            <div class="app background" id="bgImage1"></div>
+        </div>
+        <canvas class="app background light" id="bgImageLight"></canvas>
+        <div class="app background" id="bgImageFilter0"></div>
+        <div class="app background" id="bgImageFilter1"></div>
+        <div class="app" id="fgImage"></div>
+        <div class="app light" id="fgImageLight"></div>
+        <div class="app" id="splash">
+            <div class="app" id="splashBg"></div>
+            <span class="app" id="splashMessage"></span>
+        </div>
+        <div class="app" id="caution">
+            <div class="app" id="cautionBg"></div>
+            <span class="app" id="cautionMessage"></span>
+        </div>
+        <div class="app" id="title">
+            <div class="app" id="titleBg"></div>
+            <div class="app" id="titleBgOverlay0"></div>
+            <div class="app" id="titleBgOverlay1"></div>
+            <div class="app" id="titleBgOverlay2"></div>
+            <div class="app" id="titleBgOverlay3"></div>
+            <div class="app" id="titleBgOverlay4"></div>
+            <div class="app" id="titleBgOverlay5"></div>
+            <div class="app" id="titleBgOverlay6"></div>
+            <div class="app" id="titleBgOverlay7"></div>
+            <div class="app" id="titleBgOverlay8"></div>
+            <div class="app" id="titleBgOverlay9"></div>
+            <div class="app" id="titleLogo"></div>
+            <button class="app" id="titleStart"></button>
+            <button class="app" id="titleCredit"></button>
+            <span class="app" id="copyright">
+                ver 1.2.11<br>Copyright &copy; 2021-2022 Kazuhide Oka All Rights Reserved.
+            </span>
+        </div>
+        <div class="app" id="story">
+            <div class="app" id="storyChapter"></div>
+            <div class="app header" id="storyTitle"></div>
+            <div class="app border" id="storyBorder0"></div>
+            <button class="app borderless" id="storyBack"></button>
+            <button class="app borderless" id="storyNext"></button>
+            <div class="app" id="storyOutline">
+                <div class="app" id="storyOutlineText"></div>
+            </div>
+            <div class="app" id="storyTarget">
+                <button class="app" id="storyTargetText"></button>
+            </div>
+            <!--
+            <a class="app" id="review" href="https://forms.gle/ewtMXqSW2sTHC1RYA" target="_blank">体験版のレビューを書く</a>
+            -->
+        </div>
+        <div class="app" id="exproler">
+            <div class="app" id="exprolerWindow">
+                <button class="app" id="exprolerStoryTarget"></button>
+                <div class="app" id="exprolerPath"></div>
+                <div class="app border" id="exprolerBorder0"></div>
+                <div class="app scrollable" id="exprolerList">
+                    <div class="app" id="exprolerItem_template">
+                        <img class="app" id="exprolerItemImage_template"></img>
+                        <button class="app" id="exprolerItemButton_template"></button>
+                    </div>
+                </div>
+                <button class="app" id="exprolerBack"></button>
+            </div>
+        </div>
+        <div class="app" id="house">
+            <div class="app" id="itemWindow">
+                <div class="app" id="itemBox0">
+                    <div class="app header" id="itemBoxName0"></div>
+                    <div class="app" id="itemBoxCount0"></div>
+                    <div class="app border" id="houseBorder0"></div>
+                    <div class="app" id="itemBoxInfo0"></div>
+                    <button class="app" id="itemBoxInfoPrev0"></button>
+                    <div class="app" id="itemBoxInfoPage0"></div>
+                    <button class="app" id="itemBoxInfoNext0"></button>
+                </div>
+                <div class="app" id="itemBox1">
+                    <div class="app header" id="itemBoxName1"></div>
+                    <div class="app" id="itemBoxCount1"></div>
+                    <div class="app border" id="houseBorder1"></div>
+                    <div class="app" id="itemBoxInfo1"></div>
+                    <button class="app" id="itemBoxInfoPrev1"></button>
+                    <div class="app" id="itemBoxInfoPage1"></div>
+                    <button class="app" id="itemBoxInfoNext1"></button>
+                </div>
+            </div>
+            <div class="app" id="houseItem">
+                <div class="app header" id="houseItemName"></div>
+                <div class="app" id="houseItemCount"></div>
+                <div class="app border" id="houseItemBorder"></div>
+                <div class="app" id="houseItemInfo"></div>
+                <button class="app" id="houseItemInfoPrev"></button>
+                <div class="app" id="houseItemInfoPage"></div>
+                <button class="app" id="houseItemInfoNext"></button>
+            </div>
+            <div class="app" id="houseCraft">
+                <div class="app header" id="houseCraftName"></div>
+                <div class="app border" id="houseCraftBorder"></div>
+                <div class="app" id="houseCraftInfo"></div>
+                <button class="app" id="houseCraftInfoPrev"></button>
+                <div class="app" id="houseCraftInfoPage"></div>
+                <button class="app" id="houseCraftInfoNext"></button>
+            </div>
+            <button class="app" id="houseSwitchCraft"></button>
+            <button class="app" id="houseSelectCategory"></button>
+            <button class="app" id="houseSelectSort"></button>
+        </div>
+        <div class="app" id="menuTab">
+            <div class="app background" id="menuTabTopMargin"></div>
+            <div class="app background" id="menuTabBottomMargin"></div>
+            <button class="app header" id="menuStory">
+                <span class="app" id="menuStoryText"></span>
+            </button>
+            <button class="app header" id="menuExproler">
+                <span class="app" id="menuExprolerText"></span>
+            </button>
+            <button class="app header" id="menuHouse">
+                <span class="app" id="menuHouseText"></span>
+            </button>
+        </div>
+        <div class="app" id="quest">
+            <div class="app background" id="questHitFilter"></div>
+            <div class="app background" id="questDamageFilter"></div>
+            <div class="app background" id="questHealFilter"></div>
+            <div class="app background" id="questTextTopMargin"></div>
+            <div class="app background" id="questTextBottomMargin"></div>
+            <div class="app" id="questTextTopMarginFore0"></div>
+            <div class="app" id="questTextBottomMarginFore0"></div>
+            <div class="app" id="questTextTopMarginFore1"></div>
+            <div class="app" id="questTextBottomMarginFore1"></div>
+            <div class="app" id="questText0">
+                <div class="app" id="status0">
+                    <div class="app" id="statusNameBox0">
+                        <span class="app header" id="statusName0"></span>
+                    </div>
+                    <div class="app border" id="statusBorder0"></div>
+                    <div class="app" id="statusVital0"></div>
+                    <button class="app" id="statusSkill0"></button>
+                    <button class="app" id="statusItem0"></button>
+                </div>
+                <div class="app scrollable" id="questTextArea0"></div>
+                <div class="app" id="questTextSymbol0_0"></div>
+                <div class="app" id="questTextSymbol0_1"></div>
+                <div class="app" id="questTextSymbol0_2"></div>
+                <input class="app" type="text" id="questInput0"></input>
+                <button class="app" id="questInputHistory0"></button>
+                <button class="app" id="questSend0"></button>
+            </div>
+            <div class="app" id="questText1">
+                <div class="app" id="status1">
+                    <div class="app" id="statusNameBox1">
+                        <span class="app header" id="statusName1"></span>
+                    </div>
+                    <div class="app border" id="statusBorder1"></div>
+                    <div class="app" id="statusVital1"></div>
+                    <button class="app" id="statusSkill1"></button>
+                    <button class="app" id="statusItem1"></button>
+                </div>
+                <div class="app scrollable" id="questTextArea1"></div>
+                <div class="app" id="questTextSymbol1_0"></div>
+                <div class="app" id="questTextSymbol1_1"></div>
+                <div class="app" id="questTextSymbol1_2"></div>
+                <input class="app" type="text" id="questInput1"></input>
+                <button class="app" id="questInputHistory1"></button>
+                <button class="app" id="questSend1"></button>
+            </div>
+            <button class="app" id="questTextAuto"></button>
+            <div class="app" id="questTips">
+                Tips<br>
+                <span class="app" id="questTipsText"></span>
+            </div>
+        </div>
+        <div class="app" id="logue">
+            <div class="app background" id="logueTopMargin"></div>
+            <div class="app background" id="logueBottomMargin"></div>
+            <div class="app" id="logueText0">
+                <div class="app scrollable" id="logueTextArea0"></div>
+                <div class="app" id="logueTextSymbol0_0"></div>
+                <div class="app" id="logueTextSymbol0_1"></div>
+                <div class="app" id="logueTextSymbol0_2"></div>
+            </div>
+            <button class="app" id="logueTextAuto"></button>
+        </div>
+        <div class="app" id="ending">
+            <div class="app background" id="endingFilter"></div>
+            <div class="app background" id="endingFrame"></div>
+            <div class="app background" id="endingTopMargin"></div>
+            <div class="app background" id="endingBottomMargin"></div>
+            <div class="app" id="endingWindow">
+                <div class="app" id="endingChapter"></div>
+                <div class="app header" id="endingTitle"></div>
+                <div class="app" id="endingMessage"></div>
+            </div>
+        </div>
+        <div class="app" id="endroll">
+            <div class="app" id="endrollImage"></div>
+            <div class="app" id="endrollWindow">
+                <div class="app" id="endrollMessage"></div>
+            </div>
+        </div>
+        <div class="app" id="gameOver">
+            <div class="app background" id="gameOverImage"></div>
+            <div class="app background" id="gameOverFrame"></div>
+            <div class="app background" id="gameOverTopMargin"></div>
+            <div class="app background" id="gameOverBottomMargin"></div>
+            <div class="app header" id="gameOverMessage"></div>
+            <button class="app" id="gameOverContinue"></button>
+            <button class="app" id="gameOverToTitle"></button>
+        </div>
+        <div class="app" id="movie">
+            <video class="app" id="movieVideo"></video>
+            <div class="app" id="movieFill"></div>
+        </div>
+        <div class="app" id="optionOpen"></div>
+        <div class="app" id="questionOpen"></div>
+        <div class="app" id="option">
+            <div class="app" id="optionFilter"></div>
+            <div class="app" id="optionFrame"></div>
+            <div class="app header" id="optionTitle"></div>
+            <div class="app" id="optionElements0">
+                <button class="app" id="optionElement0"></button>
+                <button class="app" id="optionElement1"></button>
+                <button class="app" id="optionElement2"></button>
+                <button class="app" id="optionElement3"></button>
+                <button class="app" id="optionElement4"></button>
+                <button class="app" id="optionElement5"></button>
+            </div>
+            <div class="app" id="optionElements1">
+                <button class="app" id="optionElement6"></button>
+                <button class="app" id="optionElement7"></button>
+                <button class="app" id="optionElement8"></button>
+                <button class="app" id="optionElement9"></button>
+                <button class="app" id="optionElement10"></button>
+                <button class="app" id="optionElement11"></button>
+            </div>
+            <button class="app" id="furiganaToggle" type="button" data-furigana-skip aria-pressed="false">ふりがな : OFF</button>
+            <button class="app" id="optionClose"></button>
+        </div>
+        <div class="app" id="question">
+            <div class="app" id="questionFilter"></div>
+            <div class="app" id="questionFrame"></div>
+            <div class="app header" id="questionTitle"></div>
+            <div class="app" id="questionElements0">
+                <button class="app" id="questionElement0"></button>
+                <button class="app" id="questionElement1"></button>
+                <button class="app" id="questionElement2"></button>
+                <button class="app" id="questionElement3"></button>
+                <button class="app" id="questionElement4"></button>
+                <button class="app" id="questionElement5"></button>
+            </div>
+            <div class="app" id="questionElements1">
+                <button class="app" id="questionElement6"></button>
+                <button class="app" id="questionElement7"></button>
+                <button class="app" id="questionElement8"></button>
+                <button class="app" id="questionElement9"></button>
+                <button class="app" id="questionElement10"></button>
+                <button class="app" id="questionElement11"></button>
+            </div>
+            <button class="app" id="questionClose"></button>
+        </div>
+        <div class="app" id="help">
+            <div class="app" id="helpFilter"></div>
+            <div class="app" id="helpFrame"></div>
+            <div class="app header" id="helpTitle"></div>
+            <div class="app" id="helpElements0">
+                <button class="app" id="helpElement0"></button>
+                <button class="app" id="helpElement1"></button>
+                <button class="app" id="helpElement2"></button>
+                <button class="app" id="helpElement3"></button>
+                <button class="app" id="helpElement4"></button>
+                <button class="app" id="helpElement5"></button>
+            </div>
+            <div class="app" id="helpElements1">
+                <button class="app" id="helpElement6"></button>
+                <button class="app" id="helpElement7"></button>
+                <button class="app" id="helpElement8"></button>
+                <button class="app" id="helpElement9"></button>
+                <button class="app" id="helpElement10"></button>
+                <button class="app" id="helpElement11"></button>
+            </div>
+            <button class="app" id="helpClose"></button>
+        </div>
+        <div class="app" id="credit">
+            <div class="app" id="creditFilter"></div>
+            <div class="app header" id="creditTitle"></div>
+            <div class="app" id="creditElements">
+                <div class="app" id="creditText"></div>
+                <button class="app" id="creditClose"></button>
+            </div>
+        </div>
+        <div class="app" id="contextMenu">
+            <div class="app" id="contextMenuFrame"></div>
+        </div>
+        <div class="app" id="overlay">
+            <div class="app" id="overlayImage0"></div>
+            <div class="app" id="overlayImage1"></div>
+            <div class="app" id="overlayImage2"></div>
+        </div>
+        <div class="app" id="fade"></div>
+        <div class="app" id="catalog">
+            <div class="app" id="questionFilter"></div>
+            <div class="app header" id="catalogTitle"></div>
+            <div class="app" id="catalogElements">
+                <button class="app" id="catalogElement0"></button>
+                <button class="app" id="catalogElement1"></button>
+                <button class="app" id="catalogElement2"></button>
+                <button class="app" id="catalogElement3"></button>
+                <button class="app" id="catalogElement4"></button>
+                <button class="app" id="catalogElement5"></button>
+                <button class="app" id="catalogElement6"></button>
+                <button class="app" id="catalogElement7"></button>
+            </div>
+            <button class="app" id="catalogPagePrev"></button>
+            <div class="app" id="catalogPage"></div>
+            <button class="app" id="catalogPageNext"></button>
+            <button class="app" id="catalogClose"></button>
+        </div>
+        <div class="app" id="dialog">
+            <div class="app" id="dialogFrame"></div>
+            <div class="app" id="dialogWindow">
+                <div class="app" id="dialogElements">
+                    <div class="app" id="dialogText0"></div>
+                    <div class="app" id="selectorText"></div>
+                    <div class="app" id="dialogText1"></div>
+                    <div class="app" id="selector">
+                        <button class="app" id="selectorLeft"></button>
+                        <div class="app" id="selectorPage"></div>
+                        <button class="app" id="selectorRight"></button>
+                    </div>
+                    <div class="app" id="dialogButtons">
+                        <button class="app" id="dialogButton0"></button>
+                        <button class="app" id="dialogButton1"></button>
+                        <button class="app" id="dialogButton2"></button>
+                        <button class="app" id="dialogButton3"></button>
+                        <button class="app" id="dialogButton4"></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="app" id="develop">
+            <div class="app" id="developWatermark"></div>
+        </div>
+    </div>
+    </div>
+    <div id="loading">
+        <div id="loadingImage"></div>
+    </div>
+
+    <script type="text/javascript" src="js/develop/dip/dipSwitch.js"></script>
+    <script type="text/javascript" src="js/develop/autoPlay/autoPlayExecutor.js"></script>
+    <script type="text/javascript" src="js/develop/autoPlay/autoPlayFlow.js"></script>
+    <script type="text/javascript" src="js/develop/autoPlay/autoPlayResident.js"></script>
+    <script type="text/javascript" src="js/develop/autoPlay/autoPlayStory.js"></script>
+    <script type="text/javascript" src="js/develop/autoPlay/autoPlayExproler.js"></script>
+    <script type="text/javascript" src="js/develop/autoPlay/autoPlayQuest.js"></script>
+    <script type="text/javascript" src="js/develop/autoPlay/autoPlayEnding.js"></script>
+    <script type="text/javascript" src="js/develop/autoPlay/autoPlayGameOver.js"></script>
+    <script type="text/javascript" src="js/develop/test/testSwitch.js"></script>
+
+</body>
+
+</html>

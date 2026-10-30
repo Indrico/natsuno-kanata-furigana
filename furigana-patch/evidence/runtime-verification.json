@@ -1,0 +1,12 @@
+{
+  "runtime": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) natsuno-kanata/1.0.0 Chrome/89.0.4389.128 Electron/12.0.5 Safari/537.36",
+  "archive": "file:///home/indrico/reverse_test/vn_a/resources/app.asar/app/index.html",
+  "passed": [
+    "Settings toggle loads the bundled dictionary through file:// inside app.asar.",
+    "Readings, okurigana, HTML, whitespace, emoji, unknown kanji and existing ruby survive without duplicate annotation.",
+    "Real TextLine animation completes nested markup; left/right command clicks submit only the original text.",
+    "OFF hides readings immediately; ON restores them and also works when switched during active typing.",
+    "ON persists after reload and readings appear in the actual opening story."
+  ],
+  "rendererExceptions": []
+}

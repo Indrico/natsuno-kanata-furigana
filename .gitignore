@@ -1,0 +1,9 @@
+# Track the reusable patch and repository instructions in this game directory.
+/*
+!/.gitignore
+!/.gitattributes
+!/README.md
+!/furigana-patch/
+
+__pycache__/
+*.py[cod]

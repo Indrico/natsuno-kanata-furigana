@@ -1,0 +1,3 @@
+* text=auto eol=lf
+# Preserve the exact payload bytes when checking out on Windows or Linux.
+furigana-patch/payload/** -text
