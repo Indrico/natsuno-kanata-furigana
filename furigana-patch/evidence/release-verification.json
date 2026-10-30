@@ -1,0 +1,8 @@
+{
+  "asset": "natsuno-kanata-furigana-v1.0.0-windows.zip",
+  "bytes": 374526090,
+  "zipSHA256": "1b1480d6d42489e87d22c3fd70a7d00382ba7c86b39665f01d4f141e15d069b9",
+  "archiveSHA256": "8931a7be0c675c1c5c2b852d8e918cb092ba5c959ba72412a9ed496242ce6fcf",
+  "zipCrcCheckPassed": true,
+  "archiveMatchesTestedBuild": true
+}

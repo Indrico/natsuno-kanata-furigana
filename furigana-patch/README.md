@@ -1,5 +1,9 @@
 # Natsuno Kanata furigana patch
 
+For Windows installation without Python, download the ready-to-copy ZIP from
+the [latest release](https://github.com/Indrico/natsuno-kanata-furigana/releases/latest)
+and follow the [installation guide](../README.md).
+
 Copy this directory into the game folder alongside `resources`, then apply it
 with `python3 furigana-patch/apply.py` from the game folder (Python 3.11+).
 See the [installation guide](../README.md) for the full Windows instructions.

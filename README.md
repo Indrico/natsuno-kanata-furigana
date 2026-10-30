@@ -6,7 +6,27 @@ dictionary. The setting is remembered between launches.
 
 ![Furigana in the opening story](furigana-patch/evidence/story-on.png)
 
-## Install
+## Install on Windows — no Python
+
+Download the ready-to-copy ZIP from the [latest release](https://github.com/Indrico/natsuno-kanata-furigana/releases/latest):
+**`natsuno-kanata-furigana-v1.0.0-windows.zip`** under **Assets**.
+
+This build is for the game displaying version **1.2.11** (Electron package
+version 1.0.0).
+
+1. Close the game.
+2. Back up the game's original `resources/app.asar`, for example as
+   `resources/app.asar.original`. Keep an existing original backup if you already
+   have one.
+3. Extract the release ZIP. Copy its `resources` folder into the game folder
+   containing `natsuno-kanata.exe`. Choose **Replace** for `resources/app.asar`.
+4. Start the game, open the gear menu, and click **ふりがな : OFF** to enable
+   readings. Click again to turn them off.
+
+The release ZIP contains the patched archive and the offline dictionary.
+Installation does not require Python, Node.js, or a terminal.
+
+## Build and install from source
 
 You need an installed copy of the game and **Python 3.11 or newer**. This patch
 was built for the game displaying version **1.2.11** (Electron package version
@@ -47,8 +67,11 @@ was built for the game displaying version **1.2.11** (Electron package version
 
 ## Restore
 
-The installer preserves the original archive at `resources/app.asar.original`.
-Close the game, then run this from the game folder:
+For the ready-to-copy release, close the game and replace `resources/app.asar`
+with your original backup.
+
+The Python installer preserves the original archive at
+`resources/app.asar.original`. Close the game, then run this from the game folder:
 
 ```sh
 py furigana-patch/apply.py --restore
